@@ -16,8 +16,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     // set up constructor injection
     @Autowired
-    public EmployeeDAOImpl (EntityManager entityManager) {
-        this.entityManager = entityManager;
+    public EmployeeDAOImpl (EntityManager theEntityManager) {
+        entityManager = theEntityManager;
     }
 
     @Override
