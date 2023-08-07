@@ -1,7 +1,7 @@
 package br.com.mateus.cruddemo.rest;
 
-import br.com.mateus.cruddemo.dao.EmployeeDAO;
 import br.com.mateus.cruddemo.entity.Employee;
+import br.com.mateus.cruddemo.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,17 +13,17 @@ import java.util.List;
 @RequestMapping("/api")
 public class EmployeeRestController {
 
-    private EmployeeDAO employeeDAO;
+    private EmployeeService employeeService;
 
     // quick and dirty: inject employee dao using constructor injection
     @Autowired
-    public EmployeeRestController(EmployeeDAO theEmployeeDAO) {
-        employeeDAO = theEmployeeDAO;
+    public EmployeeRestController(EmployeeService theEmployeeService) {
+        employeeService = theEmployeeService;
     }
 
     // expose "/employees" and return a list of employees
     @GetMapping("/employees")
     public List<Employee> findAll() {
-        return employeeDAO.findAll();
+        return employeeService.findAll();
     }
 }
